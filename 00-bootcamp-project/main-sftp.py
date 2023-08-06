@@ -22,6 +22,8 @@ DATA_FOLDER = "data"
 # ให้แก้โค้ดด้านล่างให้ไปโหลดไฟล์ข้อมูล products และ promos แทน
 files = [
     "orders.csv",
+    # "products.csv",
+    # "promos.csv" 
 ]
 with pysftp.Connection(host, username=username, password=password, port=port, cnopts=cnopts) as sftp:
     for f in files:

@@ -35,3 +35,34 @@ table = "order_items"
 header = ["order_id", "product_id", "quantity"]
 # ลองดึงข้อมูลจากตาราง order_items และเขียนลงไฟล์ CSV
 # YOUR CODE HERE
+with open(f"{DATA_FOLDER}/order_items.csv", "w") as f:
+    writer = csv.writer(f)
+    writer.writerow(header)
+
+    query = f"select * from {table}"
+    cursor.execute(query)
+
+    results = cursor.fetchall()
+    for each in results:
+        writer.writerow(each)
+
+# -------
+
+# tables = [
+#     "users",
+#     "orders",
+#     "events",
+# ]
+# date = "2021-02-10"
+# # ลองดึงข้อมูลจาก API เส้น orders และเขียนลงไฟล์ CSV
+# # YOUR CODE HERE
+# for table in tables:
+#     response = requests.get(f"{API_URL}/{table}/?created_at={date}")
+#     data = response.json()
+#     with open(f"{DATA_FOLDER}/{table}.csv", "w") as f:
+#         writer = csv.writer(f)
+#         header = data[0].keys()
+#         writer.writerow(header)
+
+#         for each in data:
+#             writer.writerow(each.values())
